@@ -2,11 +2,22 @@ pipeline {
     agent any
     stages {
          
-            
-          stage('Build') { 
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
-            }
-          }
+stage ('Build') {
+
+steps {
+
+sh 'mvn clean package'
+
+}
+
+}
+
+stage ('Publish') {
+steps {
+// Add steps to publish artifacts or deploy the appli
+// For example, you can use the 'archiveArtifacts' st
+archiveArtifacts 'target/ *. jar'
+}
     }
+}
 }
